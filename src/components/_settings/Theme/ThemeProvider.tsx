@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { themes, Direction, ThemeOptionInitial } from './defaults';
 
 type ThemeProviderProps = {
-  children: React.ReactChildren | React.ReactChildren[];
+  children: React.ReactElement | React.ReactElement[];
   theme: ThemeOptionInitial;
   direction?: Direction;
 };
