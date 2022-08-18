@@ -6,19 +6,12 @@ import { useAmp } from 'next/amp';
 import * as S from './style';
 
 export type AProps = {
-  externalLink: boolean;
-  textColor: string;
-  hoverColor: string;
-  color: string;
-  invertOnHover: boolean;
-  as: string;
+  externalLink?: boolean;
   to: string;
-  target: string;
-  title: string;
-  children: React.ReactElement;
-  underlineColor: string;
-  lineType: 'dotted' | 'dashed' | 'solid';
-  rel: 'noopener' | 'noreferrer' | 'nofollow';
+  target?: string;
+  children?: React.ReactElement | React.ReactElement[] | string;
+  lineType?: 'dotted' | 'dashed' | 'solid';
+  rel?: 'noopener' | 'noreferrer' | 'nofollow';
   utm?: {
     source: string;
     medium: string;
@@ -28,14 +21,11 @@ export type AProps = {
 
 export function A({
   externalLink = false,
-  as,
   to = '/',
   target = '_self',
-  title,
   children,
-
-  lineType,
-  rel,
+  lineType = 'dashed',
+  rel = 'nofollow',
   utm,
 }: AProps) {
   // const { getColor, publicUrl } = useTheme();
@@ -56,15 +46,14 @@ export function A({
           lineType={lineType}
           href={buildUtmParams()}
           target={target}
-          title={title}
           rel={rel || (externalLink ? 'noopener' : null)}
         >
-          {children}
+          {children || ''}
         </S.Link>
       ) : (
-        <Link href={to.replace('', '')} as={as}>
-          <S.Link lineType={lineType} href={to} target={target} title={title}>
-            {children}
+        <Link href={to.replace('', '')}>
+          <S.Link lineType={lineType} href={to} target={target}>
+            {children || ''}
           </S.Link>
         </Link>
       )}
