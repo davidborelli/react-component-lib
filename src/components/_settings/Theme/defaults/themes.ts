@@ -22,7 +22,7 @@ export type ThemeOptionInitial =
   | 'eco'
   | 'ces'
   | 'tsr';
-export type ThemeOption = {
+type ThemeOption = {
   name: string;
   base: string;
   mainColor: string;
@@ -31,218 +31,219 @@ export type ThemeOption = {
   headerColor?: string;
   footerBaseColor?: string;
   direction: Direction;
-};
-
-export type CommonTheme = {
   configBase: typeof configBase;
   fontFamilies: typeof fontFamilies;
   fontSizes: typeof fontSizes;
   spacings: typeof spacings;
   sizes: typeof sizes;
   shadows: typeof shadows;
-  colors: {
-    custom: typeof customColors;
-    commom: typeof commomColors;
-  };
+  customColors: typeof customColors;
+  commomColors: typeof commomColors;
   medias: typeof medias;
 };
-
-type AllThemes = {
+type Themes = {
   [key in ThemeOptionInitial]: ThemeOption;
 };
 
-type Themes = {
-  webs: AllThemes;
-  commonTheme: CommonTheme;
-};
-
-export type Theme = {
-  current: ThemeOption;
-  common: CommonTheme;
-};
-
-const defaultThemes: CommonTheme = {
+const defaultImports = {
   configBase,
   fontFamilies,
   fontSizes,
   spacings,
   sizes,
   shadows,
-  colors: {
-    custom: customColors,
-    commom: commomColors,
-  },
+  customColors,
+  commomColors,
   medias,
 };
 
 export const themes: Themes = {
-  webs: {
-    a4a: {
-      name: 'Android 4 All',
-      base: 'a4a',
-      mainColor: 'lime',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    buc: {
-      name: 'Busco un Coche',
-      base: 'buc',
-      mainColor: 'orange',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: true,
-      direction: 'ltr',
-      headerColor: 'default',
-      footerBaseColor: 'secondary',
-    },
-    ed: {
-      name: 'Eres Deportista',
-      base: 'ed',
-      mainColor: 'green',
-      secondaryColor: 'acqua',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    em: {
-      name: 'Eres Mamá',
-      base: 'em',
-      mainColor: 'pink',
-      secondaryColor: 'purple',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    lmem: {
-      name: 'La Mente es Maravillosa',
-      base: 'lmem',
-      mainColor: 'indigo',
-      secondaryColor: 'acqua',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    ma: {
-      name: 'Mis Animales',
-      base: 'ma',
-      mainColor: 'red',
-      secondaryColor: 'yellow',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    mcs: {
-      name: 'Mejor con Salud',
-      base: 'mcs',
-      mainColor: 'blue',
-      secondaryColor: 'pink',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    md: {
-      name: 'Mi Decoración',
-      base: 'md',
-      mainColor: 'purple',
-      secondaryColor: 'grey-warm',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    ms: {
-      name: 'Muy Salud',
-      base: 'ms',
-      mainColor: 'blue',
-      secondaryColor: 'indigo',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    mv: {
-      name: 'Mi Viaje',
-      base: 'mv',
-      mainColor: 'red-candy',
-      secondaryColor: 'yellow',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    uc: {
-      name: 'Unycas',
-      base: 'uc',
-      mainColor: 'grey-warm',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    vbb: {
-      name: 'Vuelos Baratos Baratos',
-      base: 'vbb',
-      mainColor: 'blue-sky',
-      secondaryColor: 'yellow',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    dol: {
-      name: 'Dicas Online',
-      base: 'dol',
-      mainColor: 'red',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    ec: {
-      name: 'eConsejos',
-      base: 'ec',
-      mainColor: 'red',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    epl: {
-      name: 'El Placer de la Lectura',
-      base: 'epl',
-      mainColor: 'orange-brownish',
-      secondaryColor: 'grey-warm',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    ent: {
-      name: 'Entrenamiento.com',
-      base: 'ent',
-      mainColor: 'grey-warm',
-      secondaryColor: 'orange',
-      isColorizedMode: true,
-      direction: 'ltr',
-      headerColor: 'main.1000',
-      footerBaseColor: 'main',
-    },
-    ds: {
-      name: 'Deporte Saludable',
-      base: 'ds',
-      mainColor: 'blue-azure',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    eco: {
-      name: 'Ecocosas',
-      base: 'eco',
-      mainColor: 'green',
-      secondaryColor: 'grey-cold',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
-    ces: {
-      name: 'Cultura en Serie',
-      base: 'ces',
-      mainColor: 'pink-reddish',
-      secondaryColor: 'pink-reddish',
-      isColorizedMode: true,
-      direction: 'ltr',
-      headerColor: 'main.500',
-      footerBaseColor: 'main',
-    },
-    tsr: {
-      name: 'Tasier',
-      base: 'tsr',
-      mainColor: 'orange-dusty',
-      secondaryColor: 'blue-sky',
-      isColorizedMode: false,
-      direction: 'ltr',
-    },
+  a4a: {
+    ...defaultImports,
+    name: 'Android 4 All',
+    base: 'a4a',
+    mainColor: 'lime',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
   },
-  commonTheme: defaultThemes,
+  buc: {
+    ...defaultImports,
+    name: 'Busco un Coche',
+    base: 'buc',
+    mainColor: 'orange',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: true,
+    direction: 'ltr',
+    headerColor: 'default',
+    footerBaseColor: 'secondary',
+  },
+  ed: {
+    ...defaultImports,
+    name: 'Eres Deportista',
+    base: 'ed',
+    mainColor: 'green',
+    secondaryColor: 'acqua',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  em: {
+    ...defaultImports,
+    name: 'Eres Mamá',
+    base: 'em',
+    mainColor: 'pink',
+    secondaryColor: 'purple',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  lmem: {
+    ...defaultImports,
+    name: 'La Mente es Maravillosa',
+    base: 'lmem',
+    mainColor: 'indigo',
+    secondaryColor: 'acqua',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  ma: {
+    ...defaultImports,
+    name: 'Mis Animales',
+    base: 'ma',
+    mainColor: 'red',
+    secondaryColor: 'yellow',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  mcs: {
+    ...defaultImports,
+    name: 'Mejor con Salud',
+    base: 'mcs',
+    mainColor: 'blue',
+    secondaryColor: 'pink',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  md: {
+    ...defaultImports,
+    name: 'Mi Decoración',
+    base: 'md',
+    mainColor: 'purple',
+    secondaryColor: 'grey-warm',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  ms: {
+    ...defaultImports,
+    name: 'Muy Salud',
+    base: 'ms',
+    mainColor: 'blue',
+    secondaryColor: 'indigo',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  mv: {
+    ...defaultImports,
+    name: 'Mi Viaje',
+    base: 'mv',
+    mainColor: 'red-candy',
+    secondaryColor: 'yellow',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  uc: {
+    ...defaultImports,
+    name: 'Unycas',
+    base: 'uc',
+    mainColor: 'grey-warm',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  vbb: {
+    ...defaultImports,
+    name: 'Vuelos Baratos Baratos',
+    base: 'vbb',
+    mainColor: 'blue-sky',
+    secondaryColor: 'yellow',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  dol: {
+    ...defaultImports,
+    name: 'Dicas Online',
+    base: 'dol',
+    mainColor: 'red',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  ec: {
+    ...defaultImports,
+    name: 'eConsejos',
+    base: 'ec',
+    mainColor: 'red',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  epl: {
+    ...defaultImports,
+    name: 'El Placer de la Lectura',
+    base: 'epl',
+    mainColor: 'orange-brownish',
+    secondaryColor: 'grey-warm',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  ent: {
+    ...defaultImports,
+    name: 'Entrenamiento.com',
+    base: 'ent',
+    mainColor: 'grey-warm',
+    secondaryColor: 'orange',
+    isColorizedMode: true,
+    direction: 'ltr',
+    headerColor: 'main.1000',
+    footerBaseColor: 'main',
+  },
+  ds: {
+    ...defaultImports,
+    name: 'Deporte Saludable',
+    base: 'ds',
+    mainColor: 'blue-azure',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  eco: {
+    ...defaultImports,
+    name: 'Ecocosas',
+    base: 'eco',
+    mainColor: 'green',
+    secondaryColor: 'grey-cold',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
+  ces: {
+    ...defaultImports,
+    name: 'Cultura en Serie',
+    base: 'ces',
+    mainColor: 'pink-reddish',
+    secondaryColor: 'pink-reddish',
+    isColorizedMode: true,
+    direction: 'ltr',
+    headerColor: 'main.500',
+    footerBaseColor: 'main',
+  },
+  tsr: {
+    ...defaultImports,
+    name: 'Tasier',
+    base: 'tsr',
+    mainColor: 'orange-dusty',
+    secondaryColor: 'blue-sky',
+    isColorizedMode: false,
+    direction: 'ltr',
+  },
 };
+
+export type Theme = typeof themes.mcs;
