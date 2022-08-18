@@ -13,7 +13,7 @@ export const Link = styled.a<AStyleProps>`
   font-size: 23px;
 
   ${({ theme }) => css`
-    margin-top: ${theme.spacings.normal};
+    margin-top: ${theme.common.spacings['x-big']};
   `}
 
   &.is--underline {
