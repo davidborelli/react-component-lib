@@ -22,28 +22,6 @@ export type ThemeOptionInitial =
   | 'eco'
   | 'ces'
   | 'tsr';
-type ThemeOption = {
-  name: string;
-  base: string;
-  mainColor: string;
-  secondaryColor: string;
-  isColorizedMode: boolean;
-  headerColor?: string;
-  footerBaseColor?: string;
-  direction: Direction;
-  configBase: typeof configBase;
-  fontFamilies: typeof fontFamilies;
-  fontSizes: typeof fontSizes;
-  spacings: typeof spacings;
-  sizes: typeof sizes;
-  shadows: typeof shadows;
-  customColors: typeof customColors;
-  commomColors: typeof commomColors;
-  medias: typeof medias;
-};
-type Themes = {
-  [key in ThemeOptionInitial]: ThemeOption;
-};
 
 const defaultImports = {
   configBase,
@@ -57,7 +35,7 @@ const defaultImports = {
   medias,
 };
 
-export const themes: Themes = {
+export const themes = {
   a4a: {
     ...defaultImports,
     name: 'Android 4 All',
