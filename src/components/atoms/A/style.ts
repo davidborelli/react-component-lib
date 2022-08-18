@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type AStyleProps = {
   lineType: 'dotted' | 'dashed' | 'solid';
@@ -11,6 +11,10 @@ export const Link = styled.a<AStyleProps>`
   text-decoration: underline;
   color: red;
   font-size: 23px;
+
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.normal};
+  `}
 
   &.is--underline {
     border-bottom-width: 1px;

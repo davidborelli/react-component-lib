@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "baseUrl": "src",
     "declaration": true,
     "declarationDir": "./dist",
     "strict": true,
@@ -7,12 +9,13 @@
     "sourceMap": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
+    "noEmit": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./dist",
-    "target": "es5",
     "jsx": "react"
   },
-  "include": ["src/**/*"],
+  // "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*", "**/*.ts"],
   "exclude": ["node_modules"]
 }
