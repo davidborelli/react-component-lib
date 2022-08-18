@@ -43,7 +43,6 @@
     "build-watch": "rollup -c -w",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",
-    "postinstall": "install-peers -f",
     "start-example": "cd example && npm start",
     "deploy-example": "cd example && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
