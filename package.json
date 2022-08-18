@@ -4,7 +4,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
-    "url": "https://github.com/michal-wrzosek/react-component-lib",
+    "url": "https://github.com/davidborelli/react-component-lib",
     "type": "git"
   },
   "license": "MIT",
@@ -42,7 +42,7 @@
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "prepublishOnly": "npm run build",
-    "postinstall": "npm run build",
+    "postinstall": "install-peers -f && cd example && npm i",
     "start-example": "cd example && npm start",
     "deploy-example": "cd example && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
