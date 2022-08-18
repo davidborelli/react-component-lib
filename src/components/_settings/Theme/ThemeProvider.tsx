@@ -1,17 +1,16 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { themes, Direction, ThemeOptionInitial } from './defaults';
+import { Direction, Theme } from './defaults';
 
 type ThemeProviderProps = {
   children: React.ReactElement | React.ReactElement[];
-  theme: ThemeOptionInitial;
+  theme: Theme;
   direction?: Direction;
 };
 
-const ThemeProviderComponent = ({ children, theme = 'mcs', direction = 'ltr' }: ThemeProviderProps) => {
-  const fullTheme = { ...(themes[theme] || themes.mcs), direction };
-  return <ThemeProvider theme={fullTheme}>{children}</ThemeProvider>;
+const ThemeProviderComponent = ({ children, theme }: ThemeProviderProps) => {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default ThemeProviderComponent;
