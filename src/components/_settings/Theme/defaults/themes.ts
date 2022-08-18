@@ -40,8 +40,10 @@ export type CommonTheme = {
   spacings: typeof spacings;
   sizes: typeof sizes;
   shadows: typeof shadows;
-  customColors: typeof customColors;
-  commomColors: typeof commomColors;
+  colors: {
+    custom: typeof customColors;
+    commom: typeof commomColors;
+  };
   medias: typeof medias;
 };
 
@@ -61,8 +63,10 @@ const defaultImports: CommonTheme = {
   spacings,
   sizes,
   shadows,
-  customColors,
-  commomColors,
+  colors: {
+    custom: customColors,
+    commom: commomColors,
+  },
   medias,
 };
 
