@@ -11,6 +11,7 @@ type ThemeProviderProps = {
 
 const ThemeProviderComponent = ({ children, theme = 'mcs', direction = 'ltr' }: ThemeProviderProps) => {
   const fullTheme = { ...(themes[theme] || themes.mcs), direction };
+  console.log('*** FULL THEME => ', fullTheme);
   return <ThemeProvider theme={fullTheme}>{children}</ThemeProvider>;
 };
 
