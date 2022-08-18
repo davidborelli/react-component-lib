@@ -10,8 +10,15 @@ type ThemeProviderProps = {
 };
 
 const ThemeProviderComponent = ({ children, appTheme = 'mcs', direction = 'ltr' }: ThemeProviderProps) => {
-  const fullTheme = { current: { ...themes.webs[appTheme], direction }, common: themes.commonTheme };
-  return <ThemeProvider theme={fullTheme}>{children}</ThemeProvider>;
+  const theme = {
+    current: {
+      ...themes.webs[appTheme],
+      direction,
+    },
+    common: themes.commonTheme,
+  };
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default ThemeProviderComponent;

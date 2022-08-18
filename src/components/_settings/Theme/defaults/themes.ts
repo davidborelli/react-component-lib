@@ -56,6 +56,11 @@ type Themes = {
   commonTheme: CommonTheme;
 };
 
+export type Theme = {
+  current: ThemeOption;
+  common: CommonTheme;
+};
+
 const defaultThemes: CommonTheme = {
   configBase,
   fontFamilies,
@@ -240,9 +245,4 @@ export const themes: Themes = {
     },
   },
   commonTheme: defaultThemes,
-};
-
-export type Theme = {
-  current: ThemeOption;
-  common: CommonTheme;
 };
