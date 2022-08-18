@@ -52,11 +52,11 @@ type AllThemes = {
 };
 
 type Themes = {
-  themes: AllThemes;
+  webs: AllThemes;
   commonTheme: CommonTheme;
 };
 
-const defaultImports: CommonTheme = {
+const defaultThemes: CommonTheme = {
   configBase,
   fontFamilies,
   fontSizes,
@@ -71,7 +71,7 @@ const defaultImports: CommonTheme = {
 };
 
 export const themes: Themes = {
-  themes: {
+  webs: {
     a4a: {
       name: 'Android 4 All',
       base: 'a4a',
@@ -239,7 +239,7 @@ export const themes: Themes = {
       direction: 'ltr',
     },
   },
-  commonTheme: defaultImports,
+  commonTheme: defaultThemes,
 };
 
 export type Theme = {

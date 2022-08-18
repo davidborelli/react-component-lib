@@ -5,12 +5,12 @@ import { themes, Direction, ThemeOptionInitial } from './defaults';
 
 type ThemeProviderProps = {
   children: React.ReactElement | React.ReactElement[];
-  theme: ThemeOptionInitial;
+  appTheme: ThemeOptionInitial;
   direction?: Direction;
 };
 
-const ThemeProviderComponent = ({ children, theme = 'mcs', direction = 'ltr' }: ThemeProviderProps) => {
-  const fullTheme = { current: { ...themes.themes[theme], direction }, common: themes.commonTheme };
+const ThemeProviderComponent = ({ children, appTheme = 'mcs', direction = 'ltr' }: ThemeProviderProps) => {
+  const fullTheme = { current: { ...themes.webs[appTheme], direction }, common: themes.commonTheme };
   return <ThemeProvider theme={fullTheme}>{children}</ThemeProvider>;
 };
 
