@@ -1,7 +1,7 @@
 import { generateMedia } from 'styled-media-query';
 
 export const medias = generateMedia({
-  mobile: 480,
-  tablet: 900,
-  desktop: 1599,
+  mobile: '480px',
+  tablet: '900px',
+  desktop: '1599px',
 });
