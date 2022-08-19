@@ -6,7 +6,7 @@ import StyleProvider from '../components/_settings/ThemeProvider/ThemeProvider';
 
 type ThemeProviderContextProps = {
   children: React.ReactElement | React.ReactElement[];
-  value: ThemeProviderContextPropsData;
+  value: ThemeProviderInitialValues;
 };
 
 type ColorMode = 'light' | 'dark';
@@ -20,41 +20,47 @@ type ThemeProviderContextPropsData = {
   publicUrl: string;
   absolutUrl: string;
   colorMode: ColorMode;
+  direction: Direction;
   changeThemeMode: () => void;
+};
+
+type ThemeProviderInitialValues = {
+  theme: ThemeOptionInitial;
+  locale: string;
+  cdnPath: string;
+  publicUrl: string;
+  absolutUrl: string;
+  domains: string[];
   direction: Direction;
 };
 
-const DEFAULT_THEME = {
+const INITIAL_VALUE = {
   theme: 'lmem',
   locale: 'es',
   cdnPath: 'https://cdn.atomik.vip/',
-  userLogged: false,
-  domains: [],
   publicUrl: '',
   absolutUrl: '',
-  colorMode: 'light',
+  domains: [],
   direction: 'ltr',
-  changeThemeMode: () => null,
-} as ThemeProviderContextPropsData;
+} as ThemeProviderInitialValues;
 
 const ThemeProvider = createContext<ThemeProviderContextPropsData>({} as ThemeProviderContextPropsData);
 
-export function ThemeProviderContext({ children, value = DEFAULT_THEME }: ThemeProviderContextProps) {
+export function ThemeProviderContext({ children, value = INITIAL_VALUE }: ThemeProviderContextProps) {
   const LOCAL_STORAGE_NAME = 'themeColorMode';
-
-  const [theme, setTheme] = useState<ThemeProviderContextPropsData>(value);
-
+  const [theme, setTheme] = useState<ThemeProviderInitialValues>(value);
   const HandleTheme = new HandleLocalStorage<ColorMode>(LOCAL_STORAGE_NAME);
+  const [colorMode, setColorMode] = useState<ColorMode>('light');
 
   useEffect(() => {
     const currentTheme = HandleTheme.getItem();
 
     if (currentTheme) {
-      setTheme((oldValues) => ({ ...oldValues, colorMode: currentTheme }));
+      setColorMode(currentTheme);
       return;
     }
 
-    HandleTheme.setItem(DEFAULT_THEME.colorMode);
+    HandleTheme.setItem('light');
   }, []);
 
   const changeThemeMode = () => {
@@ -73,6 +79,8 @@ export function ThemeProviderContext({ children, value = DEFAULT_THEME }: ThemeP
       value={{
         ...theme,
         changeThemeMode,
+        colorMode,
+        userLogged: false,
       }}
     >
       <StyleProvider direction={theme.direction} theme={theme.theme}>
