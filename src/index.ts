@@ -1,6 +1,4 @@
 import { A } from './components/atoms/A';
-import { themes, ThemeOptionInitial, Theme } from './components/_settings/Theme/defaults';
+import { themes, ThemeOptionInitial, Theme } from './components/_settings/ThemeProvider/defaults';
 
-import StyleProvider from './components/_settings/Theme/ThemeProvider';
-
-export { A, themes, ThemeOptionInitial, Theme, StyleProvider };
+export { A, themes, ThemeOptionInitial, Theme };
