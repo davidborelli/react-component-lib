@@ -29,7 +29,7 @@ export function A({
   utm,
 }: AProps) {
   // const { getColor, publicUrl } = useTheme();
-  const isAmp = useAmp();
+  // const isAmp = useAmp();
 
   // const lineColorHex = underlineColor ? getColor(underlineColor) : 'transparent';
 
@@ -41,7 +41,7 @@ export function A({
 
   return (
     <>
-      {externalLink || isAmp ? (
+      {externalLink ? (
         <S.Link
           lineType={lineType}
           href={buildUtmParams()}
